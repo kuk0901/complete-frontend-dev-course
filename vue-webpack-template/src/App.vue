@@ -1,34 +1,21 @@
 <template>
-  <h1>
-    {{ count }}
-  </h1>
+  <h1>{{ msg }}</h1>
+  <input
+    type="text"
+    v-model.trim="msg" />
 </template>
 
 <script>
 export default {
   data() {
     return {
-      count: 2
+      msg: 'Hello world!'
     }
   },
-  beforeCreate() {
-    console.log('Before Create!', this.count) // undefined
-  },
-  created() {
-    console.log('Created!', this.count)
-    console.log(document.querySelector('h1')) // null
-  },
-  beforeMount() {
-    console.log('Before Mount!')
-    console.log(document.querySelector('h1')) // null
-  },
-  mounted() {
-    console.log('Mounted!')
-    console.log(document.querySelector('h1')) // O
-  },
-
+  watch: {
+    msg() {
+      console.log(this.msg);
+    }
+  }
 }
 </script>
-<style lang="scss" scoped>
-
-</style>
