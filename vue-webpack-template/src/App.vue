@@ -1,48 +1,34 @@
 <template>
-  <h1 @click="increase">
+  <h1>
     {{ count }}
   </h1>
-  <div v-if="count > 4">
-    4보다 큽니다!
-  </div>
-  <ul>
-    <MyFruit
-      v-for="fruit in fruits"
-      :key="fruit"
-      :name="fruit">
-      {{ fruit }}
-    </MyFruit>
-  </ul>
 </template>
 
 <script>
-import MyFruit from "~/components/MyFruit";
-
 export default {
-  components: {
-    MyFruit
-  },
   data() {
     return {
-      count: 0,
-      fruits: ["Apple", "Banana", "Cherry"]
+      count: 2
     }
   },
-  methods: {
-    increase() {
-      this.count++;
-    }
-  }
+  beforeCreate() {
+    console.log('Before Create!', this.count) // undefined
+  },
+  created() {
+    console.log('Created!', this.count)
+    console.log(document.querySelector('h1')) // null
+  },
+  beforeMount() {
+    console.log('Before Mount!')
+    console.log(document.querySelector('h1')) // null
+  },
+  mounted() {
+    console.log('Mounted!')
+    console.log(document.querySelector('h1')) // O
+  },
+
 }
 </script>
 <style lang="scss" scoped>
-h1 {
-  font-size: 50px;
-  color: royalblue;
-}
-ul {
-  li {
-    font-size: 40px;
-  }
-}
+
 </style>
