@@ -1,22 +1,15 @@
 <script>
 export default {
-  name: "MyButton",
-  inheritAttrs: false,
-  created() {
-    console.log(this.$attrs)
-  }
+  name: "MyButton"
 }
 </script>
 
 <template>
   <div
     class="btn">
-    <slot></slot>
+    <slot name="icon"></slot>
+    <slot name="text"></slot>
   </div>
-  <h1
-    v-bind="$attrs">
-    야호
-  </h1>
 </template>
 
 <style scoped lang="scss">

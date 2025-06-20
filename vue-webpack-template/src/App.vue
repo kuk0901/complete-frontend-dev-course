@@ -1,16 +1,26 @@
 <template>
-  <MyButton
-    class="heropy"
-    style="color: red;">
-    Banana
-  </MyButton>
+  <div>
+    {{ count }}
+  </div>
+  <button @click="increase">
+    click me
+  </button>
 </template>
 
 <script>
-import MyButton from "~/components/MyButton.vue";
+import {ref} from 'vue'
 export default {
-  components: {
-    MyButton
+  setup() {
+    // 반응성을 갖는 객체 데이터
+   const count = ref(0);
+   function increase() {
+     count.value++;
+   }
+
+   return {
+     count,
+     increase
+   }
   }
 }
 </script>
