@@ -1,21 +1,16 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <input
-    type="text"
-    v-model.trim="msg" />
+  <MyButton
+    class="heropy"
+    style="color: red;">
+    Banana
+  </MyButton>
 </template>
 
 <script>
+import MyButton from "~/components/MyButton.vue";
 export default {
-  data() {
-    return {
-      msg: 'Hello world!'
-    }
-  },
-  watch: {
-    msg() {
-      console.log(this.msg);
-    }
+  components: {
+    MyButton
   }
 }
 </script>
