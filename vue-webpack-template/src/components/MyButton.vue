@@ -1,16 +1,33 @@
-<script>
-export default {
-  name: "MyButton"
-}
-</script>
-
 <template>
   <div
-    class="btn">
-    <slot name="icon"></slot>
-    <slot name="text"></slot>
+    v-bind="$attrs"
+    class="btn"
+    @click="hello">
+    <slot></slot>
   </div>
 </template>
+
+<!-- inheritAttrs: false -->
+<script setup>
+import { onMounted, useAttrs } from 'vue'
+
+const props = defineProps({
+  color: {
+    type: String,
+    default: "gray"
+  }
+})
+const emit = defineEmits(['hello'])
+
+const hello = () => {
+  emit('hello')
+}
+
+onMounted(() => {
+  console.log(props.color)
+  console.log(useAttrs())
+})
+</script>
 
 <style scoped lang="scss">
 .btn {
