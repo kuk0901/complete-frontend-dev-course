@@ -1,6 +1,8 @@
 <script setup>
 import { ref, reactive } from 'vue';
-import axios from "axios";
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const title = ref('');
 const filters = ref([
@@ -32,8 +34,12 @@ const form = reactive({
 });
 
 const apply = async () => {
-  const OMDB_API_KEY = '7035c60c';
-  const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title.value}&type=${form.type}&y=${form.year}&page=1`);
+  await store.dispatch('movie/searchMovies', {
+    title: title.value,
+    type: form.type,
+    number: form.number,
+    year: form.year
+  });
 }
 
 </script>

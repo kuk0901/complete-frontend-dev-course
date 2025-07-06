@@ -1,22 +1,12 @@
+<script setup>
+import Header from "~/components/Header"
+</script>
+
 <template>
-  <MyButton
-    class="heropy"
-    style="color:red;"
-    color="#ff0000"
-    @hello="log">
-    Apple
-  </MyButton>
+  <Header />
+  <router-view />
 </template>
 
-<script>
-import MyButton from "~/components/MyButton.vue";
-
-export default {
-  components: {MyButton},
-  methods: {
-    log() {
-      console.log("Hello world!")
-    }
-  }
-}
-</script>
+<style lang="scss">
+@import "~/scss/main";
+</style>

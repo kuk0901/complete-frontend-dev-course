@@ -42,7 +42,15 @@ module.exports = {
             // 'style-loader', // html의 style태그에 해석된 css를 삽입
             'css-loader', // JS 에서 CSS 해석
             'postcss-loader',
-            'sass-loader' // sass 해석
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                quietDeps: true,
+                silenceDeprecations: ['import']
+              }
+            }
+          }
         ]
       },
       {
